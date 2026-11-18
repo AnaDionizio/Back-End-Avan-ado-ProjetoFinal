@@ -123,9 +123,9 @@ Principais métodos modificadores e regras implementadas:
 
 O diagrama apresenta as entidades, atributos, métodos modificadores, relacionamentos e multiplicidades, de forma coerente com o código implementado.
 
-Arquivo: [`diagrama4.png`](diagrama4.png)
+Arquivo: [`diagrama_classes.png`](diagrama_classes.png)
 
-![Diagrama de classes do Sistema de Encomendas](diagrama4.png)
+![Diagrama de classes do Sistema de Encomendas](diagrama_classes.png)
 
 ---
 
