@@ -328,6 +328,7 @@ Ao iniciar, a aplicação se conecta ao banco e gera as tabelas `clientes`, `fun
 | Ana Julya Rodrigues Dionizio | AnaDionizio |
 | Alex Julio de Brito | alexjdebrito |
 | Everton Fernandes S. da Silva | evertonsilvaof |
+| Arthur Valões | _usuario_ |
 
 Todos os integrantes têm acesso ao repositório como colaboradores.
 
