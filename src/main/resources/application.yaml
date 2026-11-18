@@ -1,0 +1,15 @@
+
+spring:
+  datasource:
+    url: jdbc:sqlserver://localhost:55778;databaseName=sistema_encomendas;encrypt=true;trustServerCertificate=true
+    username: sistema_app
+    password: 12348765
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
