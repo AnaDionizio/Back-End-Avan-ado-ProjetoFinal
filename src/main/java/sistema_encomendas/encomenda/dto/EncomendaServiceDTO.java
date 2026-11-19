@@ -1,5 +1,4 @@
-
-package sistema_encomendas.encomenda.service;
+package sistema_encomendas.encomenda.dto;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,11 +10,11 @@ import sistema_encomendas.shared.enums.StatusEncomenda;
 import java.util.List;
 
 @Service
-public class EncomendaService {
+public class EncomendaServiceDTO {
 
     private final EncomendaRepository repository;
 
-    public EncomendaService(EncomendaRepository repository) {
+    public EncomendaServiceDTO(EncomendaRepository repository) {
         this.repository = repository;
     }
 

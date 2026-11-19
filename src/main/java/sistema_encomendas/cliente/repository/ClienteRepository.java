@@ -1,6 +1,7 @@
 package sistema_encomendas.cliente.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -14,5 +15,12 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
     List<Cliente> findByNomeContainingIgnoreCase(String nome);
 
+    Optional<Cliente> findByCpf(String cpf);
+
     boolean existsByTelefone(String telefone);
+
+    boolean existsByCpf(String cpf);
+
+    /** Verifica se outro cliente (com id diferente) já usa esse CPF. Útil na atualização. */
+    boolean existsByCpfAndIdNot(String cpf, Long id);
 }

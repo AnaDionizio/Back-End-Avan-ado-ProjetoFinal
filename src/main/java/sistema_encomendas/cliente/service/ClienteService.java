@@ -11,6 +11,7 @@ import sistema_encomendas.cliente.entity.Cliente;
 import sistema_encomendas.cliente.mapper.ClienteMapper;
 import sistema_encomendas.cliente.repository.ClienteRepository;
 import sistema_encomendas.shared.exception.RecursoNaoEncontradoException;
+import sistema_encomendas.shared.exception.RegraDeNegocioException;
 
 @Service
 public class ClienteService {
@@ -25,6 +26,9 @@ public class ClienteService {
 
     @Transactional
     public ClienteResponseDTO criar(ClienteRequestDTO dto) {
+        if (repository.existsByCpf(dto.cpf())) {
+            throw new RegraDeNegocioException("Já existe um cliente cadastrado com o CPF " + dto.cpf());
+        }
         Cliente salvo = repository.save(mapper.toEntity(dto));
         return mapper.toResponse(salvo);
     }
@@ -48,7 +52,18 @@ public class ClienteService {
     @Transactional
     public ClienteResponseDTO atualizar(Long id, ClienteRequestDTO dto) {
         Cliente cliente = obterEntidade(id);
-        cliente.atualizarDados(dto.nome(), dto.telefone(), dto.email());
+
+        if (repository.existsByCpfAndIdNot(dto.cpf(), id)) {
+            throw new RegraDeNegocioException("Já existe outro cliente cadastrado com o CPF " + dto.cpf());
+        }
+
+        cliente.atualizarDados(
+                dto.nome(),
+                dto.telefone(),
+                dto.email(),
+                dto.endereco(),
+                dto.cpf());
+
         return mapper.toResponse(cliente);
     }
 

@@ -1,15 +1,17 @@
-
 package sistema_encomendas.cliente.entity;
 
 import jakarta.persistence.*;
-import java.util.Objects;
 import sistema_encomendas.encomenda.entity.Encomenda;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "clientes")
 public class Cliente {
+
+    // ===================== Atributos =====================
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,37 +29,41 @@ public class Cliente {
     @Column(length = 255)
     private String endereco;
 
+    @Column(nullable = false, unique = true, length = 11)
+    private String cpf;
+
     @Column(nullable = false)
     private boolean ativo = true;
 
     @OneToMany(mappedBy = "cliente")
     private List<Encomenda> encomendas = new ArrayList<>();
 
-    // Construtor exigido pelo JPA
+    // ===================== Construtores =====================
+
+    /** Construtor exigido pelo JPA. */
     protected Cliente() {
     }
 
-    // Construtor para cadastrar um cliente
-    public Cliente(String nome, String telefone,
-                   String email, String endereco) {
+    /** Construtor para cadastrar um novo cliente. */
+    public Cliente(String nome, String telefone, String email,
+                   String endereco, String cpf) {
         this.nome = Objects.requireNonNull(nome).trim();
         this.telefone = Objects.requireNonNull(telefone).trim();
         this.email = email;
         this.endereco = endereco;
+        this.cpf = Objects.requireNonNull(cpf).trim();
         this.ativo = true;
     }
 
-    // Métodos de alteração de dados
-    public void atualizarDados(
-            String nome,
-            String telefone,
-            String email,
-            String endereco) {
+    // ===================== Métodos de alteração =====================
 
+    public void atualizarDados(String nome, String telefone, String email,
+                               String endereco, String cpf) {
         this.nome = Objects.requireNonNull(nome).trim();
         this.telefone = Objects.requireNonNull(telefone).trim();
         this.email = email;
         this.endereco = endereco;
+        this.cpf = Objects.requireNonNull(cpf).trim();
     }
 
     public void desativar() {
@@ -68,7 +74,8 @@ public class Cliente {
         this.ativo = true;
     }
 
-    // Métodos de consulta
+    // ===================== Getters =====================
+
     public Long getId() {
         return id;
     }
@@ -89,11 +96,15 @@ public class Cliente {
         return endereco;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
     public boolean isAtivo() {
         return ativo;
     }
+
     public List<Encomenda> getEncomendas() {
         return encomendas;
     }
-
 }
