@@ -105,4 +105,7 @@ public class Funcionario {
     public List<HistoricoAlteracao> getHistoricosAlteracao() {
         return historicosAlteracao;
     }
+    import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 }
