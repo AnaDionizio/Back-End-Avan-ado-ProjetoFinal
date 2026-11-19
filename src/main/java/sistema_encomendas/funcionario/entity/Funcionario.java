@@ -1,4 +1,3 @@
-
 package sistema_encomendas.funcionario.entity;
 
 import jakarta.persistence.*;
@@ -94,6 +93,7 @@ public class Funcionario {
     public boolean isAtivo() {
         return ativo;
     }
+
     public List<Encomenda> getEncomendasRegistradas() {
         return encomendasRegistradas;
     }
@@ -105,7 +105,4 @@ public class Funcionario {
     public List<HistoricoAlteracao> getHistoricosAlteracao() {
         return historicosAlteracao;
     }
-    import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-
 }
